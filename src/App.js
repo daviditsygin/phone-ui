@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
+
+  const [user, setUser] = React.useState(null)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App bg-gray-800">
+      <div className="flex h-full ">
+        {user ? <div className="w-1/4 bg-gray-900 text-white">
+          Sidebar
+        </div> : <></>}
+        <div className="w-full bg-gray-700 text-white">
+          Router goes here
+        </div>
+      </div>
     </div>
   );
 }
