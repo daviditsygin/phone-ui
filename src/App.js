@@ -4,6 +4,7 @@ import firebase from "./firebase.js";
 
 import { Client as Styletron } from "styletron-engine-atomic";
 import { Provider as StyletronProvider } from "styletron-react";
+import { colors } from "baseui/tokens";
 import { LightTheme, DarkTheme, BaseProvider, styled } from "baseui";
 import { PhoneInput, COUNTRIES, SIZE } from "baseui/phone-input";
 import { StatefulInput } from "baseui/input";
@@ -74,12 +75,22 @@ function App() {
   return (
     <div className="App bg-gray-800">
       <div className="flex h-full ">
-        {user ? (
-          <div className="w-1/4 bg-gray-900 text-white">Sidebar</div>
-        ) : (
-          <div className="w-1/4 bg-gray-900 text-white">Sidebar</div>
-        )}
-        <div className="w-full bg-gray-800 text-white p-8">
+        <div
+          className="w-1/4 text-white p-8"
+          style={{
+            background: colors.gray600,
+          }}
+        >
+          Sidebar
+        </div>
+        {user ? <></> : <></>}
+        <div
+          className="w-full bg-gray-800 text-white p-8"
+          style={{
+            background: colors.gray800,
+          }}
+        >
+          <h2 className="text-left mb-2">Choose your work phone number.</h2>
           <Hello
             updateText={(t) => {
               console.log("got this from updateText", t);
@@ -100,8 +111,11 @@ function App() {
             {numbers.map((n, i) => {
               return (
                 <li
-                  className="p-2 pl-16 hover:text-purple-600 transition duration-500"
-                  style={{ background: i == idx ? "#202020" : "#292929" }}
+                  className="p-2 pl-16 hover:text-purple-600 transition duration-300"
+                  style={{
+                    background: i == idx ? colors.gray700 : colors.gray900,
+                    color: i == idx ? colors.purple200 : colors.gray200,
+                  }}
                   onMouseOver={(e) => setIdx(i)}
                 >
                   <p className="text-sm">{n.friendlyName}</p>
