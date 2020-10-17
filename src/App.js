@@ -7,16 +7,15 @@ function App() {
 
   const getNumbers = async () => {
     let res = await fetch(
-      process.env.REACT_APP_FUNCTION_URL + "/numbers/browse/1",
+      process.env.REACT_APP_FUNCTION_DEV + "/lookUpNumbers",
       {
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
       }
     );
     let json = await res.json();
-    setNumbers(json.data);
+    setNumbers(json);
     console.log(numbers);
   };
 
@@ -34,7 +33,19 @@ function App() {
         ) : (
           <></>
         )}
-        <div className="w-full bg-gray-700 text-white">Router goes here</div>
+        <div className="w-full bg-gray-700 text-white p-8">
+          
+          <input className="w-full bg-gray-100 text-gray-700 p-2" />
+          <ul className="">
+          {numbers.map((n) => {
+          return <li>{n.friendlyName}</li>
+        })}
+          </ul>
+
+
+        </div>
+
+
       </div>
     </div>
   );
